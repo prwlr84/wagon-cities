@@ -1,26 +1,13 @@
 body {
   color: white;
   background-color: black;
+  overflow: hidden;
 }
 
 .app {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
-  .cities {
-    width: 30%;
-  }
-  .active-city {
-    width: 70%;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    h3 {
-      margin-top: 0;
-    }
-  }
 }
 
 .list-group-item {
@@ -64,6 +51,27 @@ body {
 .card-trip-infos .card-trip-user {
   position: absolute;
   right: 16px;
-  top: -20px;
+  top: 10px;
   width: 40px;
+}
+
+div.active{
+  color: #0099ff;
+  display: table;
+  text-align: center;
+
+  h1, div {
+    display: table-cell;
+    vertical-align: middle;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.city-list {
+  padding-right: 0;
+  height: 100vh;
+  overflow-y: scroll;
 }

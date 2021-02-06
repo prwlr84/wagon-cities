@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectCity } from '../actions';
+import { setActiveCity } from '../actions';
 
 class City extends Component {
   handleClick = () =>{
-   this.props.selectFlat(this.props.city);
+   this.props.setActiveCity(this.props.city);
   }
 
   render(){
@@ -16,7 +17,6 @@ class City extends Component {
             <h2>{this.props.city.name}</h2>
             <p>{this.props.city.address}</p>
           </div>
-          <h2 className="card-trip-pricing" style={{opacity: '0.2'}}>{this.props.city.slug}</h2>
           <img src="https://kitt.lewagon.com/placeholder/users/prwlr84" className="card-trip-user avatar-bordered" />
         </div>
       </div>
@@ -26,14 +26,14 @@ class City extends Component {
 
 function mapDispatchToProps(dispatch) {
  return bindActionCreators(
- { selectCity: selectCity },
+ { setActiveCity: setActiveCity },
  dispatch
  );
 }
 
 function mapStateToProps(state) {
  return {
- selectedCity: state.selectedCity
+ activeCity: state.activeCity
  };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(City);
