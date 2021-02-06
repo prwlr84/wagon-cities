@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { selectCity } from '../actions';
 
 class City extends Component {
+  handleClick = () =>{
+   this.props.selectFlat(this.props.city);
+  }
+
   render(){
-    console.log(this.props.city.name)
     return(
-      <div className="card-trip">
-        <img src="https://picsum.photos/200/300" />
+      <div className="card-trip" onClick={this.handleClick}>
         <div className="card-trip-infos" style={{color: '#0099ff'}}>
           <div>
             <h2>{this.props.city.name}</h2>
@@ -19,4 +24,16 @@ class City extends Component {
   }
 }
 
-export default City;
+function mapDispatchToProps(dispatch) {
+ return bindActionCreators(
+ { selectCity: selectCity },
+ dispatch
+ );
+}
+
+function mapStateToProps(state) {
+ return {
+ selectedCity: state.selectedCity
+ };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(City);
